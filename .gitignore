@@ -1,0 +1,48 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging and build outputs
+build/
+dist/
+site/
+*.egg-info/
+*.egg
+
+# Test and coverage artifacts
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Tooling state
+.pre-commit-config.yaml.lock
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.idea/
+.vscode/*
+!.vscode/mcp.json
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+docs/
