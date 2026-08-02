@@ -54,12 +54,6 @@ def build_services(config: AppConfig | None = None) -> DevSetupServices:
 def repository_destination(url: str, config: AppConfig) -> Path:
     """
     Clone repositories beside the current project.
-
-    Example:
-
-    PROJECTS/
-    ├── CloneCode/
-    ├── NETFLIXclone/
     """
 
     base_name = url.rstrip("/").split("/")[-1].removesuffix(".git")
