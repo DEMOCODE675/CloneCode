@@ -2,11 +2,58 @@
 
 DevSetup is a cross-platform CLI for bootstrapping GitHub projects with one command.
 
+
+## Usage
+
+
 ```bash
-devsetup https://github.com/user/project
+devsetup setup https://github.com/user/project
 ```
 
 It scans the repository, detects the language, framework, and package manager, then runs the install and health-check flow with Rich progress output.
+
+
+### Clone only
+
+```bash
+devsetup clone https://github.com/user/project
+```
+
+### Scan a project
+
+```bash
+devsetup scan .
+```
+
+### Run diagnostics
+
+```bash
+devsetup doctor .
+```
+
+### List installed plugins
+
+```bash
+devsetup plugins
+```
+
+### Clear cache
+
+```bash
+devsetup cache clear
+```
+
+### Clean generated files
+
+```bash
+devsetup clean
+```
+
+### Show version
+
+```bash
+devsetup version
+```
 
 ## Highlights
 
@@ -24,7 +71,7 @@ pip install -e .[dev]
 
 ## Commands
 
-- `devsetup <repo-url>` or `devsetup setup <repo-url>`
+- `devsetup setup <repo-url>`
 - `devsetup clone <repo-url>`
 - `devsetup scan [path]`
 - `devsetup doctor [path]`
