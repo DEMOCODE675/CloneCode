@@ -52,8 +52,31 @@ def build_services(config: AppConfig | None = None) -> DevSetupServices:
 
 
 def repository_destination(url: str, config: AppConfig) -> Path:
-    """Compute a destination path for cloned repositories."""
+    """
+    Clone repositories beside the current project.
+
+    Example:
+
+    PROJECTS/
+    ├── CloneCode/
+    ├── NETFLIXclone/
+    """
 
     base_name = url.rstrip("/").split("/")[-1].removesuffix(".git")
-    destination_root = config.clone.destination or config.cache.state / "repos"
-    return destination_root / base_name
+
+    # If user specified --destination, use it.
+    if config.clone.destination is not None:
+        return config.clone.destination / base_name
+
+    current = Path.cwd().resolve()
+
+    # If running inside a git repository, clone beside it.
+    git_root = current
+
+    while git_root != git_root.parent:
+        if (git_root / ".git").exists():
+            return git_root.parent / base_name
+        git_root = git_root.parent
+
+    # Otherwise clone beside current directory.
+    return current.parent / base_name
