@@ -2,19 +2,21 @@
 
 from __future__ import annotations
 
-from rich.console import Console
-from rich.panel import Panel
+from typing import Literal
+
+from rich.console import Console, RenderableType
 from rich.table import Table
 
+from devsetup.cli.ui.cat_art import render_cat_banner
 from devsetup.core.models import HealthCheckResult
 
 console = Console()
 
 
-def render_banner() -> Panel:
-    """Return the DevSetup banner panel."""
+def render_banner(style: Literal["matrix", "card"] = "matrix") -> RenderableType:
+    """Return the DevSetup cat banner."""
 
-    return Panel.fit("[bold cyan]DevSetup[/bold cyan]\nUniversal development environment bootstrapper", border_style="cyan")
+    return render_cat_banner(style=style)
 
 
 def render_health_table(results: tuple[HealthCheckResult, ...]) -> Table:

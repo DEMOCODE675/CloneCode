@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import typer
 
+from devsetup.cli.commands.banner import register as register_banner
 from devsetup.cli.commands.cache import register as register_cache
 from devsetup.cli.commands.clean import register as register_clean
 from devsetup.cli.commands.clone import register as register_clone
@@ -15,7 +16,11 @@ from devsetup.cli.commands.version import register as register_version
 from devsetup.cli.ui.console import console, render_banner
 from devsetup.core.orchestrator import build_services, repository_destination
 
-app = typer.Typer(add_completion=False, help="Universal development environment bootstrapper.", context_settings={"allow_extra_args": True, "ignore_unknown_options": True})
+app = typer.Typer(
+    add_completion=False,
+    help="Universal development environment bootstrapper.",
+    context_settings={"allow_extra_args": True, "ignore_unknown_options": True},
+)
 
 
 @app.callback(invoke_without_command=True)
@@ -30,7 +35,12 @@ def main(ctx: typer.Context) -> None:
     repository_url = ctx.args[0]
     services = build_services()
     target = repository_destination(repository_url, services.config)
-    services.cloner.clone(repository_url, target, branch=services.config.clone.branch, depth=services.config.clone.depth)
+    services.cloner.clone(
+        repository_url,
+        target,
+        branch=services.config.clone.branch,
+        depth=services.config.clone.depth,
+    )
     snapshot = services.scanner.scan(target)
     detected = services.detector.detect_snapshot(snapshot)
     results = services.installer.install(detected)
@@ -51,6 +61,7 @@ register_plugins(app)
 register_clean(app)
 register_cache(app)
 register_version(app)
+register_banner(app)
 
 
 if __name__ == "__main__":
