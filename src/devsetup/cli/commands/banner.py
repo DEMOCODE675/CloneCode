@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
+from typing import Literal
+
 import typer
 
 from devsetup.cli.ui.console import console, render_banner
+
+BannerStyle = Literal["matrix", "card"]
 
 
 def register(app: typer.Typer) -> None:
@@ -20,7 +24,7 @@ def register(app: typer.Typer) -> None:
         ),
     ) -> None:
         """Display the DevSetup cat banner."""
-        chosen_style = "card" if style.lower() == "card" else "matrix"
+        chosen_style: BannerStyle = "card" if style.lower() == "card" else "matrix"
         console.print(render_banner(style=chosen_style))
 
     @app.command()
@@ -33,6 +37,5 @@ def register(app: typer.Typer) -> None:
         ),
     ) -> None:
         """Show the mascot cat."""
-        chosen_style = "card" if style.lower() == "card" else "matrix"
+        chosen_style: BannerStyle = "card" if style.lower() == "card" else "matrix"
         console.print(render_banner(style=chosen_style))
-
