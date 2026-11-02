@@ -1,12 +1,85 @@
-# DevSetup
+# DevSetup 🐾
+
+
+DevSetup is a universal, cross-platform CLI for bootstrapping GitHub projects with one command.
 
 [![CI](https://github.com/DEMOCODE675/CloneCode/actions/workflows/ci.yml/badge.svg)](https://github.com/DEMOCODE675/CloneCode/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.12%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 
 **DevSetup** is a cross-platform command-line tool for getting GitHub projects ready to run. Give it a repository URL or a local project directory and it will identify the technology stack, install dependencies, and report project health with clear Rich-powered output.
 
+
+```text
+# ------------------------------------------------------------------------
+# ........................................................................
+# .........................      /\_____/\      ..........................
+# ........................     /  /\   /\  \     .........................
+# ......................    (   (o)   (o)   )     '.......................
+# ................... \  / .. (  (*)  .  (*)  ) .. \  /...................
+# .................. ===  ... (     .w.     ) ...  === ...................
+# .................. /  \ .... \           / .... /  \ ...................
+# ........................    /     | |     \    .........................
+# ........................   |      | |      |   .........................
+# ........................   |    ( | | )    |   .........................
+# ........................   (____( | | )____)   .........................
+# ........................................................................
+# ............[ DevSetup Universal Environment Bootstrapper ].............
+# ------------------------------------------------------------------------
+```
+
+---
+
+## 🚀 Quick Run (No Clone or Setup Needed!)
+
+You can run `devsetup` immediately in your terminal without cloning or saving any files:
+
+### Run ephemerally (like `npx`):
 ```bash
+# Using uv (fastest):
+uvx --from git+https://github.com/DEMOCODE675/CloneCode.git@v2 devsetup
+
+# Or using pipx:
+pipx run --spec git+https://github.com/DEMOCODE675/CloneCode.git@v2 devsetup
+```
+
+---
+
+## 📦 One-Line Global Install
+
+Install `devsetup` permanently to your system with a single command:
+
+### Windows (PowerShell):
+```powershell
+irm https://raw.githubusercontent.com/DEMOCODE675/CloneCode/v2/install.ps1 | iex
+```
+
+### macOS & Linux:
+```bash
+
+curl -fsSL https://raw.githubusercontent.com/DEMOCODE675/CloneCode/v2/install.sh | bash
+```
+
+### Via `pipx` or `pip`:
+```bash
+pipx install git+https://github.com/DEMOCODE675/CloneCode.git@v2
+# or
+pip install git+https://github.com/DEMOCODE675/CloneCode.git@v2
+```
+
+Once installed, just type:
+```bash
+devsetup
+```
+
+---
+
+## 💻 Usage
+
+```bash
+devsetup setup https://github.com/user/project
+
 devsetup https://github.com/owner/project
+
 ```
 
 ## Why DevSetup?
@@ -27,6 +100,22 @@ Starting an unfamiliar repository usually means figuring out its language, frame
 
 ## Supported ecosystems
 
+
+### Clone only
+```bash
+devsetup clone https://github.com/user/project
+```
+
+### Scan a project
+```bash
+devsetup scan .
+```
+
+### Run diagnostics
+```bash
+devsetup doctor .
+```
+
 DevSetup currently includes plugins for:
 
 **Angular · Astro · Django · Express · FastAPI · Flutter · Go · Java · Laravel · NestJS · Next.js · Node.js · PHP · Python · Rails · React · Remix · Ruby · Rust · Spring · Svelte · Vue**
@@ -37,7 +126,35 @@ Detection is based on project metadata such as manifests, lock files, source lay
 
 DevSetup is currently installed from a checkout:
 
+
+### Show mascot cat banner
 ```bash
+
+devsetup cat
+# Or modern card style:
+devsetup banner --style card
+```
+
+### List installed plugins
+```bash
+devsetup plugins
+```
+
+### Clear cache
+```bash
+devsetup cache clear
+```
+
+### Clean generated files
+```bash
+devsetup clean
+```
+
+### Show version
+```bash
+devsetup version
+```
+
 git clone https://github.com/DEMOCODE675/CloneCode.git
 cd CloneCode
 python -m pip install -e .
@@ -69,7 +186,35 @@ devsetup setup https://github.com/owner/project --destination ~/src/project
 
 Passing a repository URL directly performs the same bootstrap flow:
 
+
+---
+
+## ✨ Highlights
+
+- Python 3.12+
+- Typer CLI with Rich output & cute mascot cat terminal splash screen
+- Universal one-line installer for Windows, macOS, and Linux
+- Plugin-driven architecture
+- Automatic package manager and framework detection
+
+---
+
+## 🛠️ Development
+
+To develop locally:
+
 ```bash
+git clone https://github.com/DEMOCODE675/CloneCode.git
+cd CloneCode
+pip install -e .[dev]
+```
+
+Run checks:
+```bash
+
+ruff check src tests
+pytest
+
 devsetup https://github.com/owner/project
 ```
 
@@ -126,3 +271,4 @@ Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for local setu
 ## License
 
 No license file is currently included in this repository. Add a license before distributing DevSetup or accepting external contributions under explicit reuse terms.
+

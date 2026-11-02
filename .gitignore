@@ -1,6 +1,7 @@
 # Python bytecode
 __pycache__/
 *.py[cod]
+*$py.class
 *.pyd
 *.so
 
@@ -14,8 +15,12 @@ ENV/
 build/
 dist/
 site/
+_build/
 *.egg-info/
 *.egg
+*.whl
+*.tar.gz
+*.spec
 
 # Test and coverage artifacts
 .pytest_cache/
@@ -26,12 +31,19 @@ site/
 coverage.xml
 htmlcov/
 
-# Tooling state
+# Tooling and lock files
 .pre-commit-config.yaml.lock
+
+# Environment variables
+.env
+.env.*
+!.env.example
 
 # OS files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
 
 # Editor settings
 .idea/
@@ -41,8 +53,7 @@ Thumbs.db
 # Logs
 *.log
 
-# Temporary files
+# Temporary and backup files
 *.tmp
 *.swp
-
-docs/
+*.bak
